@@ -4,3 +4,111 @@
 *:after {
   box-sizing: border-box;
 }
+/*---------Body---------*/
+.background-body {
+  background-image: url("/images/site/small_check.jpg");
+  background-repeat: repeat; /* o no-repeat según el efecto que quieras */
+  background-size: auto;     /* o cover, contain, etc. */
+}
+
+#wrapper{
+  background-color: white;
+  border: 5px solid;
+  border-color: rgb(26, 201, 213);
+  width: 80%; /* o el ancho que necesites */
+  margin: 50px auto 0 auto; /* top, right, bottom, left */
+}
+
+/*-----------Header-----------*/
+#top-header{
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 10px;
+}
+
+#top-header a{
+  text-decoration: none;
+  color: black;
+}
+
+.siteName a{
+  font-size: 45px;
+  font-weight: bold;
+}
+
+#tools{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#tools a{
+  font-size: 20px;
+}
+
+/*--------Navigation---------*/
+
+#navigation{
+  margin: 15px 0 15px 0;
+}
+
+#navigation ul{
+  background-color: black;
+  margin: 0 5px 0 5px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#navigation ul li{
+  padding: 4px 0 4px 0;
+  color:white;
+  font-size: 20px;
+}
+
+/*---------Body-Index----------*/
+#car-dmc-delorean{
+  display: flex;
+  flex-direction: column;
+}
+
+#car-dmc-delorean h1{
+  margin: 18px 5px;
+}
+
+
+.delorean-image{
+  background-image: url("/images/vehicles/delorean.jpg");
+  width: 800px;
+  height: 400px;
+  background-size: cover; /* opcional: hace que la imagen se ajuste */
+  background-position: center;
+  margin: 0 auto;
+}
+
+.own-button h2{
+  margin: 0;
+}
+
+.own-button ul{
+  margin: 0;
+  padding: 0;
+}
+
+.own-button li{
+  list-style: none;
+}
+
+.own-button a{
+    display: inline-block;
+    background-color: rgb(26, 201, 213); /* azul brillante */
+    color: #000; /* texto negro */
+    padding: 12px 27px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* quitar subrayado del <a> */
+}
+
