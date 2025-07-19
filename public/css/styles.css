@@ -7,16 +7,16 @@
 /*---------Body---------*/
 .background-body {
   background-image: url("/images/site/small_check.jpg");
-  background-repeat: repeat; /* o no-repeat según el efecto que quieras */
-  background-size: auto;     /* o cover, contain, etc. */
+  background-repeat: repeat; 
+  background-size: auto; 
 }
 
 #wrapper{
   background-color: white;
   border: 5px solid;
   border-color: rgb(26, 201, 213);
-  width: 80%; /* o el ancho que necesites */
-  margin: 50px auto 0 auto; /* top, right, bottom, left */
+  width: 80%; 
+  margin: 50px auto 0 auto; 
 }
 
 /*-----------Header-----------*/
@@ -79,36 +79,100 @@
 
 
 .delorean-image{
+  display: flex;
+  align-items: center;
   background-image: url("/images/vehicles/delorean.jpg");
-  width: 800px;
-  height: 400px;
-  background-size: cover; /* opcional: hace que la imagen se ajuste */
+  width: 900px;
+  height: 500px;
+  background-size: cover; 
   background-position: center;
   margin: 0 auto;
 }
 
+.own-button{
+  display: inline-flex;
+  flex-direction: column;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 .own-button h2{
   margin: 0;
+  font-size: 30px;
+  color: rgb(26, 201, 213);
 }
 
 .own-button ul{
   margin: 0;
   padding: 0;
+  font-size: 25px;
 }
 
 .own-button li{
   list-style: none;
+  color: rgb(26, 201, 213);
 }
 
 .own-button a{
     display: inline-block;
-    background-color: rgb(26, 201, 213); /* azul brillante */
-    color: #000; /* texto negro */
-    padding: 12px 27px;
+    background-color: rgb(26, 201, 213); 
+    color: #000; 
+    margin: 25px 0;
+    padding: 15px 20px;
     font-size: 1.2em;
     border: none;
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-decoration: none; /* quitar subrayado del <a> */
+    text-decoration: none; 
+    align-self: center;
 }
+
+#characteristics{
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+}
+
+#delorean-upgrades{
+  flex: 1;             
+  box-sizing: border-box; 
+  padding: 10px;
+}
+
+#delorean-reviews{
+  flex: 1;                
+  box-sizing: border-box; 
+  padding: 10px;
+}
+
+#images-upgrades{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.color-back{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 100px;
+  background-color: rgb(26, 201, 213);
+}
+
+.upgrade a{
+  display: block;        
+  text-align: center; 
+}
+
+.upgrade a p{
+  margin: 0;
+}
+
+/*---------Footer----------*/
+
+
+
 
