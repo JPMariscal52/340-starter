@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column-reverse;
   margin: 10px;
+  font-family: sans-serif;
 }
 
 #top-header a{
@@ -49,6 +50,7 @@
 
 #navigation{
   margin: 15px 0 15px 0;
+  font-family: sans-serif;
 }
 
 #navigation ul{
@@ -82,7 +84,7 @@
   display: flex;
   align-items: center;
   background-image: url("/images/vehicles/delorean.jpg");
-  width: 900px;
+  width: 90%;
   height: 500px;
   background-size: cover; 
   background-position: center;
@@ -145,6 +147,11 @@
   padding: 10px;
 }
 
+#delorean-reviews li{
+  font-size: 25px;
+  margin: 15px 0;
+}
+
 #images-upgrades{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -173,6 +180,52 @@
 
 /*---------Footer----------*/
 
+footer{
+  margin: 40px 10px 0 10px;
+}
 
+/*---------Media Querys----------*/
 
+@media (max-width: 768px) {
+  
+  .background-body {
+  background-image: none; 
+}
+
+#wrapper{
+  background-color: white;
+  border: none;
+  width: 100%; 
+  margin: 50px auto 0 auto; 
+}
+
+#navigation ul{
+  background-color: black;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.delorean-image{
+  display: flex;
+  align-items: center;
+  background-image: url("/images/vehicles/delorean.jpg");
+  width: 90%;
+  height: 300px;
+  background-size: cover; 
+  background-position: center;
+  margin: 0 20px;
+}
+
+#characteristics{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  gap: 0px;
+}
+
+}
 
