@@ -12,7 +12,7 @@
 }
 
 #wrapper{
-  background-color: white;
+  background-color: rgba(255, 255, 255);
   border: 5px solid;
   border-color: rgb(26, 201, 213);
   width: 80%; 
@@ -54,7 +54,7 @@
 }
 
 #navigation ul{
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   margin: 0 5px 0 5px;
   padding: 0;
   list-style: none;
@@ -65,8 +65,13 @@
 
 #navigation ul li{
   padding: 4px 0 4px 0;
-  color:white;
+  color:rgba(255, 255, 255);
   font-size: 20px;
+}
+
+#navigation ul li a{
+  text-decoration: none;
+  color: rgba(255, 255, 255);
 }
 
 /*---------Body-Index----------*/
@@ -78,7 +83,6 @@
 #car-dmc-delorean h1{
   margin: 18px 5px;
 }
-
 
 .delorean-image{
   display: flex;
@@ -183,6 +187,106 @@
 footer{
   margin: 40px 10px 0 10px;
 }
+/*---------Vehicle Detail Page----------*/
+
+.title {
+  padding: 0 10px;
+}
+
+#inv-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 80%;
+}
+
+#inv-display li{
+  height: 300px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid rgb(26, 201, 213);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.namePrice {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.namePrice hr{
+  width: 100%;
+  border: 1px solid rgb(26, 201, 213);
+}
+
+.namePrice h2 {
+  width: 100%;
+  font-size: 24px;
+  color: rgb(26, 201, 213);
+  margin: 10px 0;
+  text-align: center;
+}
+
+.namePrice h2 a {
+  text-decoration: none;
+  color: rgb(14, 15, 15);
+}
+
+.vehicle-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+.vehicle-img { 
+  flex: 1;
+  min-width: 300px;
+}
+
+.vehicle-img img {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid rgb(26, 201, 213);
+  border-radius: 10px;
+}
+
+.vehicle-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.vehicle-info h2 {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 15px;
+}
+
+.vehicle-info p {
+  font-size: 18px;
+  margin: 12px 0;
+}
+
+/*---------Error Page----------*/
+.error-container {
+  text-align: center;
+  margin: 50px 50px;
+  padding: 20px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
 
 /*---------Media Querys----------*/
 
@@ -193,14 +297,14 @@ footer{
 }
 
 #wrapper{
-  background-color: white;
+  background-color: rgba(255, 255, 255);
   border: none;
   width: 100%; 
   margin: 50px auto 0 auto; 
 }
 
 #navigation ul{
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   margin: 0 auto;
   padding: 0;
   list-style: none;
@@ -226,6 +330,23 @@ footer{
   justify-content: center;
   gap: 0px;
 }
+
+/*---------Vehicle Detail Page---------*/
+
+#inv-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vehicle-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+
+.vehicle-img,.vehicle-info {
+    width: 100%;
+  }
 
 }
 
