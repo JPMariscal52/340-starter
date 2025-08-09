@@ -190,7 +190,7 @@ footer{
 /*---------Vehicle Detail Page----------*/
 
 .title {
-  padding: 0 10px;
+  padding: 0 25px;
 }
 
 #inv-display{
@@ -287,6 +287,74 @@ footer{
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.8);
 }
+
+/*---------Account and register page----------*/
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 2px solid rgb(26, 201, 213);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.auth-form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.auth-form input {
+  padding: 10px;
+  font-size: 1em;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth-form button {
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 1em;
+  background-color: rgb(26, 201, 213);
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background-color: rgb(18, 170, 180);
+}
+
+/*---------Notice Message----------*/
+.notice {
+  color: rgb(210, 16, 16);
+  padding: 0 0 0 30px;
+}
+
+.notice li {
+  list-style: none;
+  padding: 0 0 0 25px;
+  margin: 0;
+}
+
+/*---------Management Page----------*/
+.manage-url{
+  font-size: 25px;
+  margin: 0 25px;
+}
+
+#inv-display li a img{
+    width: 100%;
+    height: auto;
+    max-height: 200px; 
+    object-fit: cover;
+    display: block;
+    }
+
 
 /*---------Media Querys----------*/
 

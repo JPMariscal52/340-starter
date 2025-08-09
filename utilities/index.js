@@ -90,4 +90,20 @@ Util.buildVehicleDetail = async function(vehicle) {
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
+//-------------------------------------------------w4
+
+// Build classification dropdown list
+Util.buildClassificationList = async function (selectedId) {
+  let data = await invModel.getClassifications()
+  let select = '<select name="classification_id" id="classification_id" required>'
+  select += '<option value="">Choose a classification</option>'
+  data.rows.forEach(row => {
+    select += `<option value="${row.classification_id}" ${selectedId == row.classification_id ? "selected" : ""}>${row.classification_name}</option>`
+  })
+  select += "</select>"
+  return select
+}
+
+//-------------------------------------------------w4
+
 module.exports = Util

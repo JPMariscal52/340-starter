@@ -1,0 +1,18 @@
+
+<div>
+  <h1 class="title">Add New Classification</h1>
+  <% if (errors && errors.length > 0) { %>
+    <ul class="notice">
+      <% errors.forEach(err => { %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <form class="auth-form" method="post" action="/inv/add-classification">
+    <label for="classification_name">Classification Name:</label>
+    <input type="text" id="classification_name" name="classification_name" required>
+    <p>Classification name must be alphabetic characters only.</p>
+    <button type="submit">Add Classification</button>
+  </form>
+</div>
+
