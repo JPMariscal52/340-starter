@@ -1,0 +1,108 @@
+<div>
+  <h1 class="title">Modify Vehicle</h1> <!-- w5: Cambié título para reflejar modificación -->
+
+  <% if (errors && errors.length > 0) { %>
+    <ul class="notice">
+      <% errors.forEach(err => { %>
+        <li><%= err.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form id="updateForm" class="auth-form" method="post" action="/inv/update"> <!-- w5: Cambié action a /inv/update -->
+
+    <label for="classification_id">Classification:</label>
+    <%- classificationSelect %>
+
+    <label for="inv_make">Make:</label>
+    <input 
+      type="text" 
+      id="inv_make" 
+      name="inv_make" 
+      required 
+      value="<%= inv_make ? inv_make : '' %>" 
+    >
+    <!-- w5: Valor actual para edición -->
+
+    <!-- w5 -->
+    <label for="inv_model">Model:</label>
+    <input 
+      type="text" 
+      id="inv_model" 
+      name="inv_model" 
+      required 
+      value="<%= inv_model ? inv_model : '' %>" 
+    >
+
+    <label for="inv_description">Description:</label>
+    <textarea 
+      id="inv_description" 
+      name="inv_description" 
+      required
+    ><%= inv_description ? inv_description : '' %></textarea> <!-- w5 -->
+
+    <!-- w5 -->
+    <label for="inv_image">Image Path:</label>
+    <input 
+      type="text" 
+      id="inv_image" 
+      name="inv_image" 
+      required 
+      value="<%= inv_image ? inv_image : '' %>" 
+    >
+
+    <!-- w5 -->
+    <label for="inv_thumbnail">Thumbnail Path:</label>
+    <input 
+      type="text" 
+      id="inv_thumbnail" 
+      name="inv_thumbnail" 
+      required 
+      value="<%= inv_thumbnail ? inv_thumbnail : '' %>" 
+    >
+    <!-- w5 -->
+    <label for="inv_year">Year:</label>
+    <input 
+      type="number" 
+      id="inv_year" 
+      name="inv_year" 
+      required 
+      value="<%= inv_year ? inv_year : '' %>" 
+    >
+    <!-- w5 -->
+    <label for="inv_price">Price:</label>
+    <input 
+      type="number" 
+      id="inv_price" 
+      name="inv_price" 
+      required 
+      value="<%= inv_price ? inv_price : '' %>" 
+    >
+
+    <!-- w5 -->
+    <label for="inv_miles">Miles:</label>
+    <input 
+      type="number" 
+      id="inv_miles" 
+      name="inv_miles" 
+      required 
+      value="<%= inv_miles ? inv_miles : '' %>" 
+    >
+
+    <!-- w5 -->
+    <label for="inv_color">Color:</label>
+    <input 
+      type="text" 
+      id="inv_color" 
+      name="inv_color" 
+      required 
+      value="<%= inv_color ? inv_color : '' %>" 
+    >
+
+
+    <button type="submit" disabled>Update Vehicle</button> <!-- w5: Cambié texto del botón -->
+
+    <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
+    <script src="/js/inv-update.js"></script>
+  </form>
+</div>

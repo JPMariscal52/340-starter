@@ -1,0 +1,57 @@
+<div>
+      <% if (messages && messages.length > 0) { %>
+    <div class="flash-message">
+      <% messages.forEach(function(msg) { %>
+        <p><%= msg %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <% if (errors && errors.length > 0) { %>
+    <div class="error-messages">
+      <% errors.forEach(function(err) { %>
+        <p><%= err.msg %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <h1><%= title %></h1>
+
+
+  <section class="account-update">
+    <h2>Account Update</h2>
+    <form action="/account/update-profile" method="post">
+    
+      <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+
+      <label for="account_firstname">First Name:</label>
+      <input type="text" id="account_firstname" name="account_firstname" required
+             value="<%= errors ? (req.body.account_firstname || '') : accountData.account_firstname %>">
+
+      <label for="account_lastname">Last Name:</label>
+      <input type="text" id="account_lastname" name="account_lastname" required
+             value="<%= errors ? (req.body.account_lastname || '') : accountData.account_lastname %>">
+
+      <label for="account_email">Email Address:</label>
+      <input type="email" id="account_email" name="account_email" required
+             value="<%= errors ? (req.body.account_email || '') : accountData.account_email %>">
+
+      <input type="submit" value="Update Account">
+    </form>
+  </section>
+
+  
+  <section class="change-password">
+    <h2>Change Password</h2>
+    <p>Enter a new password to update your current password. Password must be at least 8 characters and include letters and numbers.</p>
+    <form action="/account/change-password" method="post">
+    
+      <input type="hidden" name="account_id" value="<%= accountData.account_id %>">
+
+      <label for="account_password">New Password:</label>
+      <input type="password" id="account_password" name="account_password" required>
+
+      <input type="submit" value="Change Password">
+    </form>
+  </section>
+</div>

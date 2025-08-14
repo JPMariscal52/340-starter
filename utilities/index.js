@@ -1,4 +1,6 @@
 const invModel = require("../models/inventory-model")
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 const Util = {}
 
 /* ************************
@@ -95,7 +97,7 @@ Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)
 // Build classification dropdown list
 Util.buildClassificationList = async function (selectedId) {
   let data = await invModel.getClassifications()
-  let select = '<select name="classification_id" id="classification_id" required>'
+  let select = '<select name="classification_id" id="classificationList" required>' //id="classificationList"
   select += '<option value="">Choose a classification</option>'
   data.rows.forEach(row => {
     select += `<option value="${row.classification_id}" ${selectedId == row.classification_id ? "selected" : ""}>${row.classification_name}</option>`
@@ -104,6 +106,99 @@ Util.buildClassificationList = async function (selectedId) {
   return select
 }
 
+/* ****************************************
+ * Middleware to check if user is logged in
+ * **************************************** */
+
+Util.checkLogin = function (req, res, next) {
+  if (req.cookies && req.cookies.jwt) {
+    jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, (err, accountData) => {
+      if (err) {
+        req.flash("notice", "Please log in")
+        res.clearCookie("jwt")
+        return res.redirect("/account/login")
+      }
+      res.locals.accountData = accountData
+      next()
+    })
+  } else {
+    req.flash("notice", "Please log in")
+    res.redirect("/account/login")
+  }
+}
 //-------------------------------------------------w4
+
+//-------------------------------------------------w5
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+Util.checkJWTToken = (req, res, next) => {
+ if (req.cookies.jwt) {
+  jwt.verify(
+   req.cookies.jwt,
+   process.env.ACCESS_TOKEN_SECRET,
+   function (err, accountData) {
+    if (err) {
+     req.flash("Please log in")
+     res.clearCookie("jwt")
+     return res.redirect("/account/login")
+    }
+    res.locals.accountData = accountData
+    res.locals.loggedin = 1
+    next()
+   })
+ } else {
+  next()
+ }
+}
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+ Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
+
+ //-------------------------------------------------w5
+
+/* ****************************************
+* Middleware to check Employee or Admin access
+* Only allow access if account_type is 'Employee' or 'Admin'
+**************************************** */
+Util.checkEmployeeOrAdmin = async (req, res, next) => {
+  try {
+    const token = req.cookies.jwt
+    if (!token) {
+      req.flash("notice", "You must be logged in as Employee or Admin to access that page.")
+      let nav = await Util.getNav()
+      return res.status(401).render("account/login", { title: "Login", nav, errors: null, account_email: "" })
+    }
+
+    const accountData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+
+    if (accountData.account_type === "Employee" || accountData.account_type === "Admin") {
+      res.locals.accountData = accountData 
+      res.locals.loggedin = 1
+      return next()
+    } else {
+      req.flash("notice", "Access denied: You do not have permission to access this page.")
+      let nav = await Util.getNav()
+      return res.status(403).render("account/login", { title: "Login", nav, errors: null, account_email: accountData.account_email })
+    }
+  } catch (error) {
+    console.error("JWT validation error:", error)
+    req.flash("notice", "Session expired or invalid. Please log in.")
+    let nav = await Util.getNav()
+    return res.status(401).render("account/login", { title: "Login", nav, errors: null, account_email: "" })
+  }
+}
+
+
 
 module.exports = Util

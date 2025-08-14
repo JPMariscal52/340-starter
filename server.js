@@ -16,9 +16,8 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const baseController = require("./controllers/baseController")
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
-
-/* Prove */
 const utilities = require("./utilities/")
+const cookieParser = require("cookie-parser") //W5
 
 /* *********************** - W4
  * Middleware
@@ -44,6 +43,11 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// Cookie parser for session management - W5
+app.use(cookieParser()) 
+
+app.use(utilities.checkJWTToken) //- W5
 
 /* ***********************
  * View Engine and Templates

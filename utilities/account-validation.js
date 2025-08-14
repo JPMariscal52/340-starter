@@ -61,6 +61,31 @@
         .withMessage("Password does not meet requirements."),
     ]
   }
+//----------------------------------------------W5
+  /*  **********************************
+*  Login Data Validation Rules
+* ********************************* */
+validate.loginRules = () => {
+  return [
+    // valid email is required
+    body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide an email address.")
+      .bail()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required."),
+
+    // password is required
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .withMessage("Please provide a password."),
+  ]
+}
+//----------------------------------------------W5
 
 
   /* ******************************
@@ -84,5 +109,27 @@ validate.checkRegData = async (req, res, next) => {
   }
   next()
 }
+
+//----------------------------------------------W5
+/* ******************************
+ * Check data and return errors or continue to login
+ * ***************************** */
+validate.checkLoginData = async (req, res, next) => {
+  const { account_email } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/login", {
+      errors,
+      title: "Login",
+      nav,
+      account_email,
+    })
+    return
+  }
+  next()
+}
+//----------------------------------------------W5
 
 module.exports = validate

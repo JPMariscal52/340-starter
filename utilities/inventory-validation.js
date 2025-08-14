@@ -60,4 +60,21 @@ validate.checkInventoryData = async (req, res, next) => {
   next()
 }
 
+validate.checkUpdateData = async (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    const classificationSelect = await utilities.buildClassificationList(req.body.classification_id)
+    res.render("./inventory/update-inventory", {
+      title: "Edit " + req.body.inv_make + " " + req.body.inv_model,
+      nav,
+      classificationSelect,
+      errors: errors.array(),
+      ...req.body // Mantener los datos que el usuario ya ingresó
+    })
+    return
+  }
+  next()
+}
+
 module.exports = validate
